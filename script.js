@@ -61,7 +61,7 @@ for (let i = 0; i < items.length; i++) {
 console.log(coverItem);
 console.log(thumbItem);
 
-// aggiungo la classe active agli elementi principali
+// aggiungo la classe active agli elementi default
 
 coverContainer.innerHTML = coverItem;
 document.getElementsByClassName('cover-item')[0].classList.add('active');
@@ -70,12 +70,15 @@ document.getElementsByClassName('thumb-item')[0].classList.add('active');
 
 // il click cambia la classe active 
 
+// conta a quale oggetto dare la classe active 
 let activeCounter = 0;
 
 document.querySelector('.next').addEventListener('click',
     function() {
+        // aumenta di uno il contatore ad ogni click 
         ++activeCounter;
 
+        // rimuove la classe active al precedente e la aggiunge all'elemento dato dal numero del contatore
         document.querySelector('.cover-item.active').classList.remove('active');
         document.getElementsByClassName('cover-item')[activeCounter].classList.add('active');
                 

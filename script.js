@@ -58,9 +58,6 @@ for (let i = 0; i < items.length; i++) {
     `
 }
 
-console.log(coverItem);
-console.log(thumbItem);
-
 // aggiungo la classe active agli elementi default
 
 coverContainer.innerHTML = coverItem;
@@ -75,8 +72,15 @@ let activeCounter = 0;
 
 document.querySelector('.next').addEventListener('click',
     function() {
+        
+        // se il contatore supera il numero massimo di elementi torna al minimo per ciclare gli elementi del carousel
+        if (activeCounter > 3) {
+            activeCounter = activeCounter - 5;
+        }
+        
         // aumenta di uno il contatore ad ogni click 
         ++activeCounter;
+        console.log(activeCounter);
 
         // rimuove la classe active al precedente e la aggiunge all'elemento dato dal numero del contatore
         document.querySelector('.cover-item.active').classList.remove('active');
@@ -85,29 +89,28 @@ document.querySelector('.next').addEventListener('click',
         document.querySelector('.thumb-item.active').classList.remove('active');
         document.getElementsByClassName('thumb-item')[activeCounter].classList.add('active');
         
-        // se il contatore supera il numero massimo di elementi torna al minimo per ciclare gli elementi del carousel
-        if (activeCounter == 4) {
-            activeCounter = -1;
-        }
     
     }
 );
 
-let activeCounterPrev = 5;
+// let activeCounter = 5;
 
 document.querySelector('.prev').addEventListener('click',
     function() {
-        --activeCounterPrev;
+        
+        if (activeCounter < 1) {
+            activeCounter = activeCounter + 5;
+        }
+        
+        --activeCounter;
+        console.log(activeCounter);
 
         document.querySelector('.cover-item.active').classList.remove('active');
-        document.getElementsByClassName('cover-item')[activeCounterPrev].classList.add('active');
+        document.getElementsByClassName('cover-item')[activeCounter].classList.add('active');
                 
         document.querySelector('.thumb-item.active').classList.remove('active');
-        document.getElementsByClassName('thumb-item')[activeCounterPrev].classList.add('active');
+        document.getElementsByClassName('thumb-item')[activeCounter].classList.add('active');
         
-        if (activeCounterPrev == 0) {
-            activeCounterPrev = 5;
-        }
     
     }
 );

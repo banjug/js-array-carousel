@@ -85,6 +85,7 @@ document.querySelector('.next').addEventListener('click',
         document.querySelector('.thumb-item.active').classList.remove('active');
         document.getElementsByClassName('thumb-item')[activeCounter].classList.add('active');
         
+        // se il contatore supera il numero massimo di elementi torna al minimo per ciclare gli elementi del carousel
         if (activeCounter == 4) {
             activeCounter = -1;
         }

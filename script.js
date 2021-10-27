@@ -76,7 +76,7 @@ document.querySelector('.next').addEventListener('click',
     function() {
         ++activeCounter;
 
-        document.querySelector('.active').classList.remove('active');
+        document.querySelector('.cover-item.active').classList.remove('active');
         document.getElementsByClassName('cover-item')[activeCounter].classList.add('active');
                 
         document.querySelector('.thumb-item.active').classList.remove('active');

@@ -79,6 +79,7 @@ document.querySelector('.next').addEventListener('click',
         document.querySelector('.active').classList.remove('active');
         document.getElementsByClassName('cover-item')[activeCounter].classList.add('active');
                 
+        document.querySelector('.thumb-item.active').classList.remove('active');
         document.getElementsByClassName('thumb-item')[activeCounter].classList.add('active');
         
         if (activeCounter == 4) {
@@ -94,9 +95,10 @@ document.querySelector('.prev').addEventListener('click',
     function() {
         --activeCounterPrev;
 
-        document.querySelector('.active').classList.remove('active');
+        document.querySelector('.cover-item.active').classList.remove('active');
         document.getElementsByClassName('cover-item')[activeCounterPrev].classList.add('active');
                 
+        document.querySelector('.thumb-item.active').classList.remove('active');
         document.getElementsByClassName('thumb-item')[activeCounterPrev].classList.add('active');
         
         if (activeCounterPrev == 0) {

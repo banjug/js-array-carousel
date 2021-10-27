@@ -20,13 +20,16 @@ main {
     position: relative;
 }
 
-.cover .cover-img {
-    height: 500px;
+.cover .cover-cont {
     display: none;
 }
 
-.cover .cover-img.active {
+.cover-cont.active {
     display: block;
+}
+
+.cover .cover-img {
+    height: 500px;
 }
 
 .cover .text-cont {
@@ -64,11 +67,14 @@ main {
     border-radius: 50%;
     width: 25px;
     height: 25px;
+    line-height: 25px;
     text-align: center;
     color: white;
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
+    z-index: 1;
+    cursor: pointer;
 }
 
 .thumbnails .btn.next {

@@ -27,15 +27,81 @@ const text = [
 const coverContainer = document.querySelector('.cover');
 const thumbContainer = document.querySelector('.thumbnails');
 
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+
 // inserisco l'html di base
 
-coverContainer.innerHTML = `<div class="cover-cont active"><img class="cover-img" src="${items[0]}" alt="${title[0]}"><div class="text-cont"><h2>${title[0]}</h2><p>${text[0]}</p></div></div>`
+let coverItem = '';
+let thumbItem = '';
 
-thumbContainer.innerHTML += `<img class="thumb active" src="${items[0]}" alt="${title[0]}">`
 
-for (let i = 1; i < items.length; i++) {
+// inserisco gli element html senza classe active 
 
-    thumbContainer.innerHTML += `<img class="thumb " src="${items[i]}" alt="${title[i]}">`
-    coverContainer.innerHTML += `<div class="cover-cont "><img class="cover-img" src="${items[i]}" alt="${title[i]}"><div class="text-cont"><h2>${title[i]}</h2><p>${text[i]}</p></div></div>`
+for (let i = 0; i < items.length; i++) {
+    coverItem += `
+        <div class="cover-item ">
+            <div class="cover-img">
+                <img src="${items[i]}" alt="${title[i]}">
+            </div>
+        
+            <div class="text">
+                <h2>${title[i]}</h2>
+                <p>${text[i]}</p>
+            </div>
+        </div>`
 
+    thumbItem += `
+        <div class="thumb-item ">
+            <img src="${items[i]}" alt="">
+        </div>
+    `
 }
+
+console.log(coverItem);
+console.log(thumbItem);
+
+// aggiungo la classe active agli elementi principali
+
+coverContainer.innerHTML = coverItem;
+document.getElementsByClassName('cover-item')[0].classList.add('active');
+thumbContainer.innerHTML += thumbItem;
+document.getElementsByClassName('thumb-item')[0].classList.add('active');
+
+// il click cambia la classe active 
+
+let activeCounter = 0;
+
+document.querySelector('.next').addEventListener('click',
+    function() {
+        ++activeCounter;
+
+        document.querySelector('.active').classList.remove('active');
+        document.getElementsByClassName('cover-item')[activeCounter].classList.add('active');
+                
+        document.getElementsByClassName('thumb-item')[activeCounter].classList.add('active');
+        
+        if (activeCounter == 4) {
+            activeCounter = -1;
+        }
+    
+    }
+);
+
+let activeCounterPrev = 5;
+
+document.querySelector('.prev').addEventListener('click',
+    function() {
+        --activeCounterPrev;
+
+        document.querySelector('.active').classList.remove('active');
+        document.getElementsByClassName('cover-item')[activeCounterPrev].classList.add('active');
+                
+        document.getElementsByClassName('thumb-item')[activeCounterPrev].classList.add('active');
+        
+        if (activeCounterPrev == 0) {
+            activeCounterPrev = 5;
+        }
+    
+    }
+);

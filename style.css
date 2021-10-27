@@ -20,19 +20,26 @@ main {
     position: relative;
 }
 
-.cover .cover-cont {
+.cover .cover-item {
     display: none;
 }
 
-.cover-cont.active {
+.cover-item.active {
     display: block;
 }
 
 .cover .cover-img {
     height: 500px;
+    width: 900px;
 }
 
-.cover .text-cont {
+.cover .cover-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.cover .text {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -42,7 +49,7 @@ main {
     width: 80%;
 }
 
-.cover .text-cont h2 {
+.cover .text h2 {
     margin-bottom: 20px;
 }
 
@@ -52,14 +59,20 @@ main {
     position: relative;
 }
 
-.thumbnails .thumb {
+.thumbnails .thumb-item {
     height: 100px;
     opacity: .5;
 }
 
-.thumbnails .thumb.active {
-    border: 5px solid darkorange;
+.thumbnails .thumb-item.active {
+    border: 3px solid darkorange;
     opacity: 1;
+}
+
+.thumbnails .thumb-item img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .thumbnails .btn {

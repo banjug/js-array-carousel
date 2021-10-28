@@ -27,34 +27,32 @@ const text = [
 const coverContainer = document.querySelector('.cover');
 const thumbContainer = document.querySelector('.thumbnails');
 
-const nextBtn = document.querySelector('.next');
-const prevBtn = document.querySelector('.prev');
 
 // inserisco l'html di base
 
 let coverItem = '';
 let thumbItem = '';
 
-
 // inserisco gli element html senza classe active 
 
 for (let i = 0; i < items.length; i++) {
-    coverItem += `
-        <div class="cover-item ">
-            <div class="cover-img">
-                <img src="${items[i]}" alt="${title[i]}">
-            </div>
-        
-            <div class="text">
-                <h2>${title[i]}</h2>
-                <p>${text[i]}</p>
-            </div>
-        </div>`
 
+    coverItem += `
+    <div class="cover-item ">
+    <div class="cover-img">
+    <img src="${items[i]}" alt="${title[i]}">
+    </div>
+    
+    <div class="text">
+    <h2>${title[i]}</h2>
+    <p>${text[i]}</p>
+    </div>
+    </div>`
+    
     thumbItem += `
-        <div class="thumb-item ">
-            <img src="${items[i]}" alt="">
-        </div>
+    <div class="thumb-item ">
+    <img src="${items[i]}" alt="">
+    </div>
     `
 }
 
@@ -66,13 +64,16 @@ thumbContainer.innerHTML += thumbItem;
 document.getElementsByClassName('thumb-item')[0].classList.add('active');
 
 // il click cambia la classe active 
+// selezione dei pulsanti
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
 
 // conta a quale oggetto dare la classe active 
 let activeCounter = 0;
 
-document.querySelector('.next').addEventListener('click',
-    function() {
-        
+nextBtn.addEventListener('click',
+function() {
+    
         // se il contatore supera il numero massimo di elementi torna al minimo per ciclare gli elementi del carousel
         if (activeCounter > 3) {
             activeCounter = activeCounter - 5;
@@ -93,9 +94,7 @@ document.querySelector('.next').addEventListener('click',
     }
 );
 
-// let activeCounter = 5;
-
-document.querySelector('.prev').addEventListener('click',
+prevBtn.addEventListener('click',
     function() {
         
         if (activeCounter < 1) {

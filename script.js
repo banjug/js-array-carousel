@@ -74,14 +74,21 @@ let activeCounter = 0;
 nextBtn.addEventListener('click',
 function() {
     
-        // se il contatore supera il numero massimo di elementi torna al minimo per ciclare gli elementi del carousel
-        if (activeCounter > 3) {
-            activeCounter = activeCounter - 5;
+        if ( activeCounter < items.length - 1 ) {
+            ++activeCounter;
+            console.log(activeCounter);    
+        } else {
+            activeCounter = 0;
         }
+
+        // se il contatore supera il numero massimo di elementi torna al minimo per ciclare gli elementi del carousel
+        // if (activeCounter > 3) {
+        //     activeCounter = activeCounter - 5;
+        // }
         
         // aumenta di uno il contatore ad ogni click 
-        ++activeCounter;
-        console.log(activeCounter);
+        // ++activeCounter;
+        // console.log(activeCounter);
 
         // rimuove la classe active al precedente e la aggiunge all'elemento dato dal numero del contatore
         document.querySelector('.cover-item.active').classList.remove('active');
@@ -97,12 +104,19 @@ function() {
 prevBtn.addEventListener('click',
     function() {
         
-        if (activeCounter < 1) {
-            activeCounter = activeCounter + 5;
+        if ( activeCounter > 0 ) {
+            --activeCounter;
+            console.log(activeCounter);    
+        } else {
+            activeCounter = items.length - 1;
         }
+
+        // if (activeCounter < 1) {
+        //     activeCounter = activeCounter + 5;
+        // }
         
-        --activeCounter;
-        console.log(activeCounter);
+        // --activeCounter;
+        // console.log(activeCounter);
 
         document.querySelector('.cover-item.active').classList.remove('active');
         document.getElementsByClassName('cover-item')[activeCounter].classList.add('active');
